@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validation", "Validation\Validation.csproj", "{0633F2A3-B395-4593-A123-20A252C8836C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{D491216F-2036-4086-A702-AA914B6F0F44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Admin", "Admin\Admin.csproj", "{4DFB60DA-DFBC-4A19-B73B-EF5F185E47C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidattionTests", "ValidatorTests\ValidattionTests.csproj", "{0C8A20E3-2B95-4164-822B-8043D02D6CE6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0633F2A3-B395-4593-A123-20A252C8836C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0633F2A3-B395-4593-A123-20A252C8836C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0633F2A3-B395-4593-A123-20A252C8836C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0633F2A3-B395-4593-A123-20A252C8836C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D491216F-2036-4086-A702-AA914B6F0F44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D491216F-2036-4086-A702-AA914B6F0F44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D491216F-2036-4086-A702-AA914B6F0F44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D491216F-2036-4086-A702-AA914B6F0F44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DFB60DA-DFBC-4A19-B73B-EF5F185E47C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DFB60DA-DFBC-4A19-B73B-EF5F185E47C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DFB60DA-DFBC-4A19-B73B-EF5F185E47C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DFB60DA-DFBC-4A19-B73B-EF5F185E47C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C8A20E3-2B95-4164-822B-8043D02D6CE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C8A20E3-2B95-4164-822B-8043D02D6CE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C8A20E3-2B95-4164-822B-8043D02D6CE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C8A20E3-2B95-4164-822B-8043D02D6CE6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Validation.6.0.1304.0\lib\NET45
+	EndGlobalSection
+EndGlobal
