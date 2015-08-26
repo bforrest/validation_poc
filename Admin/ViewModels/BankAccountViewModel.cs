@@ -13,11 +13,5 @@ namespace Admin.ViewModels
         public string BankAccountName { get; set; }
         public string ABA { get; set; }
         public string BankName { get; set; }
-        //public bool Validate(IValidator<IBankAccount> validator, out IEnumerable<string> brokenRules)
-        //{
-        //    Console.WriteLine("BankAccountViewModel:Validate");
-        //    brokenRules = validator.BrokenRules();
-        //    return validator.IsValid();
-        //}
     }
 }

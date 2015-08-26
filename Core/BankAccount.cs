@@ -4,18 +4,13 @@ using Validation;
 
 namespace Core
 {
-    public class BankAccount : IBankAccount //IValidatable<IBankAccount>,
+    public class BankAccount : IBankAccount
     {
         public string AccountNumber { get; set; }
         public string BankAccountName { get; set; }
         public string ABA { get; set; }
         public string BankName { get; set; }
 
-        //public bool Validate(IValidator<IBankAccount> validator, out IEnumerable<string> brokenRules)
-        //{
-        //    Console.WriteLine("CoreBankAccount:Validate");
-        //    brokenRules = validator.BrokenRules();
-        //    return validator.IsValid();
-        //}
+        public BankAccount() { }
     }
 }

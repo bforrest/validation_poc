@@ -1,56 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Practices.EnterpriseLibrary.Validation.Validators;
+﻿using FluentValidation;
 
 namespace Validation
 {
-    public class BankAccountValidator : IValidator<IBankAccount>
+    public class BankAccountValidator : AbstractValidator<IBankAccount>
     {
-        public BankAccountValidator(IBankAccount entity)
+        public BankAccountValidator()
         {
-            _entity = entity;
-            validators = new List<Microsoft.Practices.EnterpriseLibrary.Validation.Validator>
-            {
-                new StringLengthValidator(0, RangeBoundaryType.Inclusive, 
-                    20, RangeBoundaryType.Inclusive) //string.Format(String_Length_Message, "ABA"))
-                    { Tag = entity.ABA},
+            RuleFor(account => account.AccountNumber).NotEmpty().Length(1, 40)
+                .WithMessage("Account number is required and must be less than 40 characters.");
 
-                new StringLengthValidator(1, RangeBoundaryType.Inclusive, 
-                    40, RangeBoundaryType.Inclusive) //, string.Format(String_Length_Message, "Account Number"))
-                    { Tag = entity.AccountNumber},
-
-                new StringLengthValidator(1, RangeBoundaryType.Inclusive, 
-                    254, RangeBoundaryType.Inclusive) //, string.Format(String_Length_Message, "Bank Account Name"))
-                    { Tag = entity.BankAccountName},
-
-                new StringLengthValidator(0, RangeBoundaryType.Inclusive, 
-                    254, RangeBoundaryType.Inclusive) //, string.Format(String_Length_Message, "Bank Name"))
-                    { Tag = entity.BankName},
-            };
-
-
+            RuleFor(account => account.BankAccountName).NotEmpty().Length(1, 254)
+                .WithMessage("Bank Account Name is required and must be less than 254 characters.");
+            
+            RuleFor(account => account.ABA).Length(0, 20)
+                .WithMessage("ABA should be less than 20 characters.");
+            
+            RuleFor(account => account.BankName).Length(0, 254)
+                .WithMessage("Bank Name must be less than 254 characters.");
         }
-
-        public IEnumerable<string> BrokenRules()
-        {
-            Console.WriteLine("BankAccountValidator: BrokenRules");
-            foreach (var validationResults in validators.Select(validator => validator.Validate(_entity)))
-            {
-                _brokenRules.AddRange(validationResults.Select(x => x.Message));
-            }
-            return _brokenRules;
-        }
-
-        public bool IsValid()
-        {
-            Console.WriteLine("BankAccountValidator:IsValid");
-            return !BrokenRules().Any();
-        }
-
-        private readonly string String_Length_Message = "{0} must have an {1} between {4} and {5}";
-        private readonly IBankAccount _entity;
-        private readonly List<string> _brokenRules = new List<string>();
-        private readonly List<Microsoft.Practices.EnterpriseLibrary.Validation.Validator> validators;
     }
 }
