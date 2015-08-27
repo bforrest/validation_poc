@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Admin.ViewModels;
 using Core;
@@ -16,8 +17,8 @@ namespace ValidatorTests
             [SetUp]
             public void SetUp()
             {
-                //SUT = new BankAccountViewModel
-                SUT = new BankAccount
+                SUT = new BankAccountViewModel
+                //SUT = new BankAccount
 {
                     BankAccountName = "ASDFASDF",
                     AccountNumber = "ASDFASDFLKJ-",
@@ -98,6 +99,18 @@ namespace ValidatorTests
                 Assert.NotNull(error);
                 Console.WriteLine(error);
             }
+
+            [Test]
+            public void composed_validation_works()
+            {
+                IEnumerable<string> brokenRules = new List<string>();
+                var sut = SUT as BankAccountViewModel;
+                if (sut != null)
+                {
+                    Assert.True(sut.Validate(validator, brokenRules));
+                }
+            }
+
         }
     }
 }
