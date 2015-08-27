@@ -3,7 +3,7 @@ using Validation;
 
 namespace Core
 {
-    public class BankAccount : IBankAccount, IValidatable<IBankAccount>
+    public class BankAccount : IBankAccount, ICanValidate<IBankAccount>
     {
         public string AccountNumber { get; set; }
         public string BankAccountName { get; set; }

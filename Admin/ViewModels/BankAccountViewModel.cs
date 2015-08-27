@@ -3,7 +3,7 @@ using Validation;
 
 namespace Admin.ViewModels
 {
-    public class BankAccountViewModel: IBankAccount, IValidatable<IBankAccount>
+    public class BankAccountViewModel: IBankAccount, ICanValidate<IBankAccount>
     {
         public string AccountNumber { get; set; }
         public string BankAccountName { get; set; }
