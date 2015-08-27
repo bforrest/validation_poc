@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using FluentValidation;
+using FluentValidation.Validators;
 
 namespace Validation
 {
     public interface IValidatable<T>
     {
-        bool Validate(out IEnumerable<string> brokenRules);
+        bool Validate(AbstractValidator<T> validator, IEnumerable<string> brokenRules);
     }
 }
+    

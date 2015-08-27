@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Admin.ViewModels;
+using Core;
 using FluentValidation;
 using NUnit.Framework;
 using Validation;
@@ -15,8 +16,9 @@ namespace ValidatorTests
             [SetUp]
             public void SetUp()
             {
-                SUT = new BankAccountViewModel
-                {
+                //SUT = new BankAccountViewModel
+                SUT = new BankAccount
+{
                     BankAccountName = "ASDFASDF",
                     AccountNumber = "ASDFASDFLKJ-",
                 };
