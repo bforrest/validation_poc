@@ -51,7 +51,6 @@
   <ItemGroup>
     <Compile Include="IBankAccount.cs" />
     <Compile Include="IValidatable.cs" />
-    <Compile Include="IValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validator.cs" />
     <Compile Include="BankAccountValidator.cs" />
