@@ -1,0 +1,5 @@
+Used this (https://lostechies.com/jimmybogard/2007/10/24/entity-validation-with-visitors-and-extension-methods/)
+along with https://github.com/JeremySkinner/FluentValidation/wiki/e.-Custom-Validators to externalize the validation
+mechanism for the ViewModel and Model of a typical project.
+
+Still not quite to the universal generic validation registry.
