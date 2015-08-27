@@ -7,7 +7,7 @@ namespace Validation
 {
     public static class Validator
     {
-        public static void RegisterValidatorFor<T>(T entity, AbstractValidator<T> validator)
+        public static void RegisterValidatorFor<T>(T entity, IValidatable<T> validator)
             where T : IValidatable<T>
         {
             Validators.Add(entity.GetType(), validator);

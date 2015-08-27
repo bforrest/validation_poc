@@ -10,9 +10,9 @@ namespace Core
         public string ABA { get; set; }
         public string BankName { get; set; }
 
-        public bool Validate(IEnumerable<string> brokenRules)
+        public bool Validate(out IEnumerable<string> brokenRules)
         {
-            return this.ValidateBankAccount(out brokenRules);
+           return this.ValidateBankAccount(out brokenRules);
         }
     }
 }

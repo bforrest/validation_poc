@@ -19,17 +19,17 @@ namespace ValidatorTests
                 // can replace this with the 
                 // Admin.ViewModels.BankAccountViewModel
                 // and the tests still pass.
-                SUT = new Core.BankAccount
+                Sut = new Core.BankAccount
                 {
                     BankAccountName = "ASDFASDF",
                     AccountNumber = "ASDFASDFLKJ-",
                 };
 
-                validator = new BankAccountValidator();
+                Validator = new BankAccountValidator();
             }
 
-            protected IBankAccount SUT;
-            protected AbstractValidator<IBankAccount> validator;
+            protected IBankAccount Sut;
+            protected AbstractValidator<IBankAccount> Validator;
         }
 
         public class MinimalValidBankAcount : BankAccountSpecBase
@@ -37,7 +37,7 @@ namespace ValidatorTests
             [Test]
             public void basica_valid_object()
             {
-                var result = validator.Validate(SUT);
+                var result = Validator.Validate(Sut);
                 Assert.True(result.IsValid);
             }
         }
@@ -48,35 +48,35 @@ namespace ValidatorTests
             [Test]
             public void account_number_cannot_be_null()
             {
-                SUT.AccountNumber = null;
-                var result = validator.Validate(SUT);
+                Sut.AccountNumber = null;
+                var result = Validator.Validate(Sut);
                 Assert.False(result.IsValid);
             }
 
             [Test]
             public void account_number_cannot_be_empty()
             {
-                SUT.AccountNumber = string.Empty;
-                var result = validator.Validate(SUT);
+                Sut.AccountNumber = string.Empty;
+                var result = Validator.Validate(Sut);
                 Assert.False(result.IsValid);
             }
 
             [Test]
             public void account_number_less_than_40()
             {
-                SUT.AccountNumber = SUT.AccountNumber.PadRight(41, '1');
-                var result = validator.Validate(SUT);
+                Sut.AccountNumber = Sut.AccountNumber.PadRight(41, '1');
+                var result = Validator.Validate(Sut);
                 Assert.False(result.IsValid);
             }
         }
 
-        public class BankAccount_BankAccountName : BankAccountSpecBase
+        public class BankAccountNameSpecs : BankAccountSpecBase
         {
             [Test]
             public void bank_account_name_cannot_be_empty()
             {
-                SUT.BankAccountName = string.Empty;
-                var result = validator.Validate(SUT);
+                Sut.BankAccountName = string.Empty;
+                var result = Validator.Validate(Sut);
                 Assert.False(result.IsValid);
                 Console.WriteLine(result.Errors.First().ErrorMessage);
             }
@@ -84,8 +84,8 @@ namespace ValidatorTests
             [Test]
             public void bank_account_name_cannot_be_null()
             {
-                SUT.BankAccountName = null;
-                var result = validator.Validate(SUT);
+                Sut.BankAccountName = null;
+                var result = Validator.Validate(Sut);
                 Console.WriteLine(result.Errors.First().ErrorMessage);
                 Assert.False(result.IsValid);
             }
@@ -93,8 +93,8 @@ namespace ValidatorTests
             [Test]
             public void bank_account_must_be_less_than_254()
             {
-                SUT.BankAccountName = SUT.BankAccountName.PadRight(255, '1');
-                var result = validator.Validate(SUT);
+                Sut.BankAccountName = Sut.BankAccountName.PadRight(255, '1');
+                var result = Validator.Validate(Sut);
                 Assert.False(result.IsValid);
                 var error = result.Errors.Where(x => x.PropertyName == "BankAccountName");
                 Assert.NotNull(error);
@@ -104,25 +104,24 @@ namespace ValidatorTests
             [Test]
             public void composed_validation_works()
             {
-                SUT = new Admin.ViewModels.BankAccountViewModel
+                Sut = new BankAccountViewModel
                 {
                     BankAccountName = "ASDFASDF",
                     AccountNumber = "ASDFASDFLKJ-",
                 };
 
-                IEnumerable<string> brokenRules = new List<string>();
-                var sut = (BankAccountViewModel) SUT;
-                if (sut != null)
-                {
-                    Assert.True(sut.Validate(brokenRules));
-                }
+                var sut = (BankAccountViewModel) Sut;
+                if (sut == null) return;
+
+                IEnumerable<string> brokenRules;
+                Assert.True(sut.Validate(out brokenRules));
             }
 
             [Test]
             public void validate_via_extension_method()
             {
-                IEnumerable<string> brokenRules = new List<string>();
-                var result = SUT.ValidateBankAccount(out brokenRules);
+                IEnumerable<string> brokenRules;
+                var result = Sut.ValidateBankAccount(out brokenRules);
                 Assert.True(result);
                 Assert.NotNull(brokenRules);
             }

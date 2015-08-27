@@ -9,7 +9,7 @@ namespace Admin.ViewModels
         public string BankAccountName { get; set; }
         public string ABA { get; set; }
         public string BankName { get; set; }
-        public bool Validate(IEnumerable<string> brokenRules)
+        public bool Validate(out IEnumerable<string> brokenRules)
         {
             return this.ValidateBankAccount(out brokenRules);
         }
