@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Admin.ViewModels;
-using Core;
 using FluentValidation;
 using NUnit.Framework;
 using Validation;
@@ -17,9 +16,11 @@ namespace ValidatorTests
             [SetUp]
             public void SetUp()
             {
-                SUT = new BankAccountViewModel
-                //SUT = new BankAccount
-{
+                // can replace this with the 
+                // Admin.ViewModels.BankAccountViewModel
+                // and the tests still pass.
+                SUT = new Core.BankAccount
+                {
                     BankAccountName = "ASDFASDF",
                     AccountNumber = "ASDFASDFLKJ-",
                 };
@@ -103,14 +104,28 @@ namespace ValidatorTests
             [Test]
             public void composed_validation_works()
             {
+                SUT = new Admin.ViewModels.BankAccountViewModel
+                {
+                    BankAccountName = "ASDFASDF",
+                    AccountNumber = "ASDFASDFLKJ-",
+                };
+
                 IEnumerable<string> brokenRules = new List<string>();
-                var sut = SUT as BankAccountViewModel;
+                var sut = (BankAccountViewModel) SUT;
                 if (sut != null)
                 {
-                    Assert.True(sut.Validate(validator, brokenRules));
+                    Assert.True(sut.Validate(brokenRules));
                 }
             }
 
+            [Test]
+            public void validate_via_extension_method()
+            {
+                IEnumerable<string> brokenRules = new List<string>();
+                var result = SUT.ValidateBankAccount(out brokenRules);
+                Assert.True(result);
+                Assert.NotNull(brokenRules);
+            }
         }
     }
 }

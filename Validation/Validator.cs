@@ -7,8 +7,6 @@ namespace Validation
 {
     public static class Validator
     {
-        private static readonly Dictionary<Type, object> Validators = new Dictionary<Type, object>();
-
         public static void RegisterValidatorFor<T>(T entity, AbstractValidator<T> validator)
             where T : IValidatable<T>
         {
@@ -29,5 +27,7 @@ namespace Validation
             brokenRules = result.Errors.Select(x => x.ErrorMessage);
             return result.IsValid;
         }
+
+        private static readonly Dictionary<Type, object> Validators = new Dictionary<Type, object>();
     }
 }
