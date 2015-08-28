@@ -2,7 +2,7 @@
 
 namespace Validation
 {
-    public interface ICanValidate<T>
+    public interface ICanValidate<in T>
     {
         bool Validate(out IEnumerable<string> brokenRules);
     }
