@@ -28,11 +28,6 @@ namespace Admin.ViewModels
                 var q = brokenRules.AsQueryable().Where(x => x.Item1 == columnName);
 
                 return string.Join(Environment.NewLine, q);
-                
-                //var firstOrDefault = _userValidator.Validate(this).Errors.FirstOrDefault(lol => lol.PropertyName == columnName);
-                //if (firstOrDefault != null)
-                //    return _userValidator != null ? firstOrDefault.ErrorMessage : "";
-                //return "";
             }
         }
 
