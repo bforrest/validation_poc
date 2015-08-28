@@ -19,7 +19,7 @@ namespace ValidatorTests
                 // can replace this with the 
                 // Admin.ViewModels.BankAccountViewModel
                 // and the tests still pass.
-                Sut = new Core.BankAccount
+                Sut = new Admin.ViewModels.BankAccountViewModel //new Core.BankAccount
                 {
                     BankAccountName = "ASDFASDF",
                     AccountNumber = "ASDFASDFLKJ-",
@@ -113,18 +113,53 @@ namespace ValidatorTests
                 var sut = (BankAccountViewModel) Sut;
                 if (sut == null) return;
 
-                IEnumerable<string> brokenRules;
+                IEnumerable<Tuple<string, string>> brokenRules;
                 Assert.True(sut.Validate(out brokenRules));
             }
 
             [Test]
             public void validate_via_extension_method()
             {
-                IEnumerable<string> brokenRules;
+                IEnumerable<Tuple<string, string>> brokenRules;
                 var result = Sut.ValidateBankAccount(out brokenRules);
                 Assert.True(result);
                 Assert.NotNull(brokenRules);
             }
+        }
+
+        public class BankAccountViewModelSpecs 
+        {
+            [SetUp]
+            public void SetUp()
+            {
+                var bankAccount = "1";
+                sut = new BankAccountViewModel
+                {
+                    BankAccountName = bankAccount.PadRight(255, '1'),
+                    AccountNumber = "ASDFASDFLKJ-",
+                };
+            }
+
+            [Test]
+            public void view_model_with_IDataErrorInfo()
+            {
+                var error = sut.Error;
+                Assert.True(error.Equals(columName));
+            }
+
+            [Test]
+            public void view_model_indexer()
+            {
+                var result = sut[columName];
+                Assert.True(result.StartsWith(columName));
+            }
+            
+            private BankAccountViewModel sut;
+
+            /// <summary>
+            /// BankAccountName
+            /// </summary>
+            private readonly string columName = "BankAccountName";
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Validation;
 
 namespace Core
@@ -10,7 +11,7 @@ namespace Core
         public string ABA { get; set; }
         public string BankName { get; set; }
 
-        public bool Validate(out IEnumerable<string> brokenRules)
+        public bool Validate(out IEnumerable<Tuple<string, string>> brokenRules)
         {
            return this.ValidateBankAccount(out brokenRules);
         }

@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Validation
 {
     public interface ICanValidate<in T>
     {
-        bool Validate(out IEnumerable<string> brokenRules);
+        bool Validate(out IEnumerable<Tuple<string, string>> brokenRules);
     }
 }
     
