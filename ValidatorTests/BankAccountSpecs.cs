@@ -151,7 +151,7 @@ namespace ValidatorTests
             public void view_model_indexer()
             {
                 var result = sut[columName];
-                Assert.True(result.StartsWith(columName));
+                Assert.True(result.Contains(columName));
             }
             
             private BankAccountViewModel sut;

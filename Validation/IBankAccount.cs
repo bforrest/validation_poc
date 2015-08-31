@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using FluentValidation;
-
 namespace Validation
 {
     public interface IBankAccount
