@@ -2,6 +2,12 @@
 
 namespace Validation
 {
+
+    // No event storms when validating child objects.
+    // Collection performance (adding each item to a collection)
+    // Current is on by default unless disabled via "property"
+    // ViewModel with child ViewModels vs Entity with Child entities
+    // POC document for accounting
     public class BankAccountValidator : AbstractValidator<IBankAccount>
     {
         public BankAccountValidator()
