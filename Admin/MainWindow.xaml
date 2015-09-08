@@ -7,67 +7,71 @@
         xmlns:viewModels="clr-namespace:Admin.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <SolidColorBrush x:Key="brushWatermarkBackground" Color="White" />
+        <SolidColorBrush x:Key="brushWatermarkForeground" Color="LightSteelBlue" />
+        <SolidColorBrush x:Key="brushWatermarkBorder" Color="Indigo" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <local:TextInputToVisibilityConverter x:Key="TextInputToVisibilityConverter" />
+        <Style x:Key="EntryFieldStyle" TargetType="Grid" >
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="20,0" />
+        </Style>
+    </Window.Resources>
     <Window.DataContext>
         <viewModels:BankAccountViewModel
             />
     </Window.DataContext>
     <StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Label Content="Account Number" Margin="10"/>
-            <TextBox Text="{Binding AccountNumber, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200" Margin="10">
-                <Validation.ErrorTemplate>
-                    <ControlTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <!-- Placeholder for the TextBox itself -->
-                            <AdornedElementPlaceholder x:Name="textBox"/>
-                            <TextBlock Margin="10" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
-                        </StackPanel>
-                    </ControlTemplate>
-                </Validation.ErrorTemplate>
-            </TextBox>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Label Content="Bank Account Name" Margin="10"/>
-            <TextBox Text="{Binding BankAccountName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200" Margin="10">
-                <Validation.ErrorTemplate>
-                    <ControlTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <!-- Placeholder for the TextBox itself -->
-                            <AdornedElementPlaceholder x:Name="textBox"/>
-                            <TextBlock Margin="10" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
-                        </StackPanel>
-                    </ControlTemplate>
-                </Validation.ErrorTemplate>
-            </TextBox>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Label Content="ABA" Margin="10"/>
-            <TextBox Text="{Binding ABA, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200" Margin="10">
-                <Validation.ErrorTemplate>
-                    <ControlTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <!-- Placeholder for the TextBox itself -->
-                            <AdornedElementPlaceholder x:Name="textBox"/>
-                            <TextBlock Margin="10" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
-                        </StackPanel>
-                    </ControlTemplate>
-                </Validation.ErrorTemplate>
-            </TextBox>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal">
-            <Label Content="Bank Name" Margin="10"/>
-            <TextBox Text="{Binding BankName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200" Margin="10">
-                <Validation.ErrorTemplate>
-                    <ControlTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <!-- Placeholder for the TextBox itself -->
-                            <AdornedElementPlaceholder x:Name="textBox"/>
-                            <TextBlock Margin="10" Text="{Binding [0].ErrorContent}" Foreground="Red"/>
-                        </StackPanel>
-                    </ControlTemplate>
-                </Validation.ErrorTemplate>
-            </TextBox>
-        </StackPanel>
+        <GroupBox Margin="0,20,0,0">
+            <GroupBox.Header>
+                Bank Info
+            </GroupBox.Header>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Bank Name" Margin="10"/>
+                <TextBox Text="{Binding BankAccountName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200" Margin="10"/>
+            </StackPanel>
+        </GroupBox>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Label Content="ABA" Margin="10"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="0" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+                <TextBlock Text="Search by ABA" Foreground="{StaticResource brushWatermarkForeground}" 
+                Visibility="{Binding ElementName=ABA, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="1,0,-1,0" />
+                <TextBox Name="ABA" Text="{Binding ABA, UpdateSourceTrigger=PropertyChanged}" 
+                  Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}"/>
+            </Grid>
+
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Label Content="BIC" Margin="10"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+                <TextBlock Text="Search by BIC" Foreground="{StaticResource brushWatermarkForeground}" 
+                Visibility="{Binding ElementName=BIC, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBox Name="BIC" Text="{Binding BIC, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}"></TextBox>
+            </Grid>
+
+            <Grid Grid.Row="0" Grid.Column="2">
+                <Label Content="Sort Code" Margin="10"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="2" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+                <TextBlock Text="Search By Sort Code"
+                Foreground="{StaticResource brushWatermarkForeground}" 
+                Visibility="{Binding ElementName=SortCode, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <TextBox Name="SortCode" Text="{Binding SortCode, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" ></TextBox>
+            </Grid>
+        </Grid>
         <Button Margin="10">Submit</Button>
     </StackPanel>
 </Window>
