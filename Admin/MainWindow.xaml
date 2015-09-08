@@ -76,7 +76,7 @@
                 <Label Content="{Binding Banks/SortCode}"></Label>
             </Grid>
         </Grid>
-        <ListView x:Name="listView" Height="100" ItemsSource="{Binding Banks}" SelectionMode="Multiple" IsSynchronizedWithCurrentItem="True">
+        <ListView x:Name="listView" Height="300" ItemsSource="{Binding Banks}" SelectionMode="Multiple" IsSynchronizedWithCurrentItem="True">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding ABA}" Header="ABA" Width="150"/>
