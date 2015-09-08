@@ -24,15 +24,7 @@
             />
     </Window.DataContext>
     <StackPanel>
-        <GroupBox Margin="0,20,0,0">
-            <GroupBox.Header>
-                Bank Info
-            </GroupBox.Header>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Bank Name" Margin="10"/>
-                <TextBox Text="{Binding Banks/BankName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200" Margin="10"/>
-            </StackPanel>
-        </GroupBox>
+        
         <Grid>
             <Grid Grid.Row="0" Grid.Column="0" Width="150">
                 <Label Content="Search For:" Margin="10"/>
@@ -44,6 +36,15 @@
                   Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" Margin="0,-2,0,2"/>
             </Grid>
         </Grid>
+        <GroupBox Margin="0,20,0,0">
+            <GroupBox.Header>
+                Bank Info
+            </GroupBox.Header>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Bank Name" Margin="10"/>
+                <TextBox Text="{Binding Banks/BankName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200" Margin="10"/>
+            </StackPanel>
+        </GroupBox>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition />
@@ -58,32 +59,23 @@
                 <Label Content="ABA" Margin="10"/>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="0" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
-                <TextBlock Text="Search by ABA" Foreground="{StaticResource brushWatermarkForeground}" 
-                Visibility="{Binding ElementName=ABA, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="1,0,-1,0" />
-                <TextBox Name="ABA" Text="{Binding ABA, UpdateSourceTrigger=PropertyChanged}" 
-                  Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}"/>
+                <Label Content="{Binding Banks/ABA}"></Label>
             </Grid>
 
             <Grid Grid.Row="0" Grid.Column="1">
                 <Label Content="BIC" Margin="10"/>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
-                <TextBlock Text="Search by BIC" Foreground="{StaticResource brushWatermarkForeground}" 
-                Visibility="{Binding ElementName=BIC, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                <TextBox Name="BIC" Text="{Binding BIC, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}"></TextBox>
+                <Label Content="{Binding Banks/BIC}"></Label>
             </Grid>
 
             <Grid Grid.Row="0" Grid.Column="2">
                 <Label Content="Sort Code" Margin="10"/>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="2" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
-                <TextBlock Text="Search By Sort Code"
-                Foreground="{StaticResource brushWatermarkForeground}" 
-                Visibility="{Binding ElementName=SortCode, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-                <TextBox Name="SortCode" Text="{Binding SortCode, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" ></TextBox>
+                <Label Content="{Binding Banks/SortCode}"></Label>
             </Grid>
         </Grid>
-        <Button Margin="10">Submit</Button>
         <ListView x:Name="listView" Height="100" ItemsSource="{Binding Banks}" SelectionMode="Multiple" IsSynchronizedWithCurrentItem="True">
             <ListView.View>
                 <GridView>
