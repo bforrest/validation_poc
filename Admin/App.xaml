@@ -2,8 +2,33 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Admin"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:models="clr-namespace:Admin.Models"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <x:Array x:Key="BankInfoDataSource" Type="models:BankAccount">
+            <models:BankAccount BankAccountName="Bank1" AccountNumber="Account1" ABA="ABA1" BankName="Bank Name1" BIC="BIC1"/>
+            <models:BankAccount BankAccountName = "Bank2" AccountNumber = "Account2" ABA = "ABA2" BankName = "Bank Name2" BIC = "BIC2"/>
+            <models:BankAccount BankAccountName = "Bank3" AccountNumber = "Account3" ABA = "ABA3" BankName = "Bank Name3" BIC = "BIC3"/>
+            <models:BankAccount BankAccountName = "Bank4" AccountNumber = "Account4" ABA = "ABA4" BankName = "Bank Name4" BIC = "BIC4"/>
+            <models:BankAccount BankAccountName = "Bank5" AccountNumber = "Account5" ABA = "ABA5" BankName = "Bank Name5" BIC = "BIC5"/>
+            <models:BankAccount BankAccountName = "Bank6" AccountNumber = "Account6" ABA = "ABA6" BankName = "Bank Name6" BIC = "BIC6"/>
+            <models:BankAccount BankAccountName = "Bank7" AccountNumber = "Account7" ABA = "ABA7" BankName = "Bank Name7" BIC = "BIC7"/>
+            <models:BankAccount BankAccountName = "Bank8" AccountNumber = "Account8" ABA = "ABA8" BankName = "Bank Name8" BIC = "BIC8"/>
+            <models:BankAccount BankAccountName = "Bank9" AccountNumber = "Account9" ABA = "ABA9" BankName = "Bank Name9" BIC = "BIC9"/>
+            <models:BankAccount BankAccountName = "Bank10" AccountNumber = "Account10" ABA = "ABA10" BankName = "Bank Name10" BIC = "BIC10"/>
+            <models:BankAccount BankAccountName = "Bank11" AccountNumber = "Account11" ABA = "ABA11" BankName = "Bank Name11" BIC = "BIC11"/>
+            <models:BankAccount BankAccountName = "Bank12" AccountNumber = "Account12" ABA = "ABA12" BankName = "Bank Name12" BIC = "BIC12"/>
+            <models:BankAccount BankAccountName = "Bank13" AccountNumber = "Account13" ABA = "ABA13" BankName = "Bank Name13" BIC = "BIC13"/>
+            <models:BankAccount BankAccountName = "Bank14" AccountNumber = "Account14" ABA = "ABA14" BankName = "Bank Name14" BIC = "BIC14"/>
+            <models:BankAccount BankAccountName = "Bank15" AccountNumber = "Account15" ABA = "ABA15" BankName = "Bank Name15" BIC = "BIC15"/>
+            <models:BankAccount BankAccountName = "Bank16" AccountNumber = "Account16" ABA = "ABA16" BankName = "Bank Name16" BIC = "BIC16"/>
+            <models:BankAccount BankAccountName = "Bank17" AccountNumber = "Account16" ABA = "ABA17" BankName = "Bank Name17" BIC = "BIC17"/>
+            <models:BankAccount BankAccountName = "Bank18" AccountNumber = "Account18" ABA = "ABA18" BankName = "Bank Name18" BIC = "BIC18"/>
+            <models:BankAccount BankAccountName = "Bank19" AccountNumber = "Account19" ABA = "ABA19" BankName = "Bank Name19" BIC = "BIC19"/>
+            <models:BankAccount BankAccountName = "Bank20" AccountNumber = "Account20" ABA = "ABA20" BankName = "Bank Name20" BIC = "BIC20"/>
+            <models:BankAccount />
+        </x:Array>
     </Application.Resources>
 </Application>

@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\BankAccount.cs" />
     <Compile Include="TextInputToVisibilityConverter.cs" />
     <Compile Include="ViewModels\BankAccountViewModel.cs" />
     <Compile Include="Views\BankAccountEditor.xaml.cs">

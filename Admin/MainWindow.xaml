@@ -30,9 +30,20 @@
             </GroupBox.Header>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Bank Name" Margin="10"/>
-                <TextBox Text="{Binding BankAccountName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200" Margin="10"/>
+                <TextBox Text="{Binding Banks/BankName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="200" Margin="10"/>
             </StackPanel>
         </GroupBox>
+        <Grid>
+            <Grid Grid.Row="0" Grid.Column="0" Width="150">
+                <Label Content="Search For:" Margin="10"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="0" Width="450" Background="{StaticResource brushWatermarkBackground}" Style="{StaticResource EntryFieldStyle}" >
+                <TextBlock Text="Search by ABA or BIC" Foreground="{StaticResource brushWatermarkForeground}" 
+                Visibility="{Binding ElementName=SearchString, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="1,0,-1,0" />
+                <TextBox Name="SearchString" Text="{Binding SearchString, UpdateSourceTrigger=PropertyChanged}" 
+                  Background="Transparent" BorderBrush="{StaticResource brushWatermarkBorder}" Margin="0,-2,0,2"/>
+            </Grid>
+        </Grid>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition />
@@ -73,5 +84,14 @@
             </Grid>
         </Grid>
         <Button Margin="10">Submit</Button>
+        <ListView x:Name="listView" Height="100" ItemsSource="{Binding Banks}" SelectionMode="Multiple" IsSynchronizedWithCurrentItem="True">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding ABA}" Header="ABA" Width="150"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding BIC}" Header="BIC" Width="150"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding SortCode}" Header="Sort Code" Width="150"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </StackPanel>
 </Window>

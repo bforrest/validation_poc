@@ -4,6 +4,7 @@ using System.Windows.Data;
 
 namespace Admin
 {
+    //https://code.msdn.microsoft.com/windowsapps/How-to-add-a-hint-text-to-ed66a3c6
     public class TextInputToVisibilityConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)

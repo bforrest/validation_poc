@@ -9,5 +9,9 @@ namespace Validation
         string BankAccountName { get; set; }
         
         string BankName { get; set; }
+
+        string BIC { get; set; }
+
+        string SortCode { get; set; }
     }
 }
